@@ -3,6 +3,60 @@
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
   </BOModel>
+  <NavigationItems NavigationStyle="Accordion">
+    <Items>
+      <Item Id="@136e734c-e3c0-44b1-9a36-05d375d0eef8" Caption="Home" Index="0" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Farm_ListView" ViewId="Farm_ListView" ObjectKey="" Index="0" IsNewNode="True" />
+          <Item Id="Land_ListView" ViewId="Land_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="CropCycle_ListView" ViewId="CropCycle_ListView" ObjectKey="" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="@c79d2198-624f-4460-b8a1-6b23e4b29bcb" Caption="Administration" Index="1" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="MyDetails" ViewId="ApplicationUser_DetailView" ObjectKey="@CurrentUserID" Caption="Account" ImageName="BO_MyDetails" Index="0" IsNewNode="True" />
+          <Item Id="@8ad77a32-22b9-47c6-a04b-f63bf5779506" Caption="Setup" Index="1" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Crop_ListView" ViewId="Crop_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="TerminationReason_ListView" ViewId="TerminationReason_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="UnitOfMeasure_ListView" ViewId="UnitOfMeasure_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="@728b4481-deb0-42b4-ad0c-8ee33137a9d9" Caption="User Management" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="ApplicationUser_ListView" ViewId="ApplicationUser_ListView" ObjectKey="" Index="0" IsNewNode="True" />
+              <Item Id="PermissionPolicyRole_ListView" ViewId="PermissionPolicyRole_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="Reports" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Dashboards" ViewId="DashboardData_ListView" ObjectKey="" Caption="Dashboards" IsNewNode="True" />
+              <Item Id="ReportsV2" ViewId="ReportDataV2_ListView" ObjectKey="" Caption="Reports" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="State Machine" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="XpoStateMachine_ListView" ViewId="XpoStateMachine_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+        </Items>
+      </Item>
+      <Item Id="Default" Index="2">
+        <Items>
+          <Item Id="ApplicationUser_ListView" Removed="True" />
+          <Item Id="Crop_ListView" Removed="True" />
+          <Item Id="CropCycle_ListView" Removed="True" />
+          <Item Id="Farm_ListView" Removed="True" />
+          <Item Id="Land_ListView" Removed="True" />
+          <Item Id="PermissionPolicyRole_ListView" Removed="True" />
+          <Item Id="TerminationReason_ListView" Removed="True" />
+          <Item Id="UnitOfMeasure_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Removed="True" />
+      <Item Id="State Machine" Removed="True" />
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
@@ -12,5 +66,11 @@
   </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <ListView Id="Crop_ListView" Caption="Crops" />
+    <ListView Id="CropCycle_ListView" Caption="Crop Cycles" />
+    <ListView Id="Farm_ListView" Caption="Farms" />
+    <ListView Id="Land_ListView" Caption="Lands" />
+    <ListView Id="TerminationReason_ListView" Caption="Termination Reasons" />
+    <ListView Id="UnitOfMeasure_ListView" Caption="Unit Of Measures" />
   </Views>
 </Application>
