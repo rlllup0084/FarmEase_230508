@@ -4,17 +4,15 @@ using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Claims;
-using AssociationAttribute = DevExpress.Xpo.AssociationAttribute;
 using RequiredAttribute = DevExpress.ExpressApp.Model.RequiredAttribute;
 
 namespace FarmEase_230508.Module.BusinessObjects {
     [DefaultClassOptions]
     [DefaultProperty("Name")]
-    public class Farm : XPObject {
+    public class TerminationReason : XPObject {
         private string _Name;
         private string _Description;
-        private ApplicationUser _Owner;
+        private TerminationTypeEnum _TerminationType;
 
         [Required]
         [RuleUniqueValue]
@@ -28,18 +26,10 @@ namespace FarmEase_230508.Module.BusinessObjects {
             set { SetPropertyValue(nameof(Description), ref _Description, value); }
         }
 
-        [Association("User-Farms")]
-        [Editable(false)]
-        public ApplicationUser Owner {
-            get { return _Owner; }
-            set { SetPropertyValue(nameof(Owner), ref _Owner, value); }
+        public TerminationTypeEnum TerminationType {
+            get { return _TerminationType; }
+            set { SetPropertyValue(nameof(TerminationType), ref _TerminationType, value); }
         }
-
-        [Association("Farm-Lands")]
-        public XPCollection<Land> Lands {
-            get { return GetCollection<Land>(nameof(Lands)); }
-        }
-
 
         #region Audit Fields
 
@@ -74,7 +64,7 @@ namespace FarmEase_230508.Module.BusinessObjects {
 
         #endregion
 
-        public Farm(Session session)
+        public TerminationReason(Session session)
             : base(session) {
         }
         public override void AfterConstruction() {
@@ -86,7 +76,6 @@ namespace FarmEase_230508.Module.BusinessObjects {
                 var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
                 if (currentUser != null) {
                     CreatedBy = currentUser.UserName;
-                    Owner = currentUser;
                 }
                 CreatedDate = DateTime.UtcNow;
             } else {

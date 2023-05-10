@@ -27,6 +27,11 @@ public class ApplicationUser : PermissionPolicyUser, ISecurityUserWithLoginInfo 
         get { return GetCollection<Land>(nameof(Lands)); }
     }
 
+    [Association("User-CropCycles")]
+    public XPCollection<CropCycle> CropCycles {
+        get { return GetCollection<CropCycle>(nameof(CropCycles)); }
+    }
+
     IEnumerable<ISecurityUserLoginInfo> IOAuthSecurityUser.UserLogins => LoginInfo.OfType<ISecurityUserLoginInfo>();
 
     ISecurityUserLoginInfo ISecurityUserWithLoginInfo.CreateUserLoginInfo(string loginProviderName, string providerUserKey) {

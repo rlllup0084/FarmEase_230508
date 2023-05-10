@@ -25,9 +25,11 @@ namespace FarmEase_230508.Blazor.Server.Services {
             /// </summary>
             return null;
 
-            if(!CanHandlePrincipal(principalProvider.User)) {
+#pragma warning disable CS0162 // Unreachable code detected
+            if (!CanHandlePrincipal(principalProvider.User)) {
                 return null;
             }
+#pragma warning restore CS0162 // Unreachable code detected
 
             const bool autoCreateUser = true;
 
