@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Company="Easy Farming Solutions Philippines" Copyright="2023 Easy Farming Solutions Philippines, All Rights Reserved" Description="This farming management system helps farmers manage daily tasks, improve productivity, and track key metrics like crop yield and financial performance. Features include creating and managing tasks for planting, fertilizing, watering, harvesting, and pesticide application, with data analysis tools like Gantt charts to optimize processes and reduce waste." Title="FarmEase" Logo="logo">
+  <NavigationItems>
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="MyDetails" Visible="False" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <SchemaModules>
     <SchemaModule Name="CloneObjectModule" Version="22.2.3.0" IsNewNode="True" />
     <SchemaModule Name="SystemModule" Version="22.2.3.0" IsNewNode="True" />
   </SchemaModules>
-  <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor" />
 </Application>
