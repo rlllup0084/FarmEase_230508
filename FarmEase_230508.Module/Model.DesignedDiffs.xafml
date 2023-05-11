@@ -65,33 +65,34 @@
     <SchemaModule Name="SystemModule" Version="22.2.3.0" IsNewNode="True" />
   </SchemaModules>
   <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
+    <ListView Id="ApplicationUser_CropCycles_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="ApplicationUser_Farms_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="ApplicationUser_Lands_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" />
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
-    <ListView Id="Crop_ListView" Caption="Crops" NewItemRowPosition="Top" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="Crop_ListView" Caption="Crops" NewItemRowPosition="None" ShowAutoFilterRow="True" ShowFindPanel="True" />
     <DetailView Id="CropCycle_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="Auto91756b09-d925-45ee-9a0b-22e628b46fd5" ShowCaption="False" Caption="Auto91756b09-d925-45ee-9a0b-22e628b46fd5(3)" Direction="Vertical" Index="0" RelativeSize="6.617647058823529" IsNewNode="True">
+            <LayoutGroup Id="Auto91756b09-d925-45ee-9a0b-22e628b46fd5" ShowCaption="False" Caption="Auto91756b09-d925-45ee-9a0b-22e628b46fd5(3)" Direction="Vertical" Index="0" RelativeSize="6.625766871165644" IsNewNode="True">
               <LayoutGroup Id="Item10" ShowCaption="False" CaptionLocation="Top" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
-                <LayoutItem Id="Oid" ViewItem="Oid" CaptionLocation="Top" Index="0" RelativeSize="28.014440433212997" IsNewNode="True" />
-                <LayoutItem Id="Owner" ViewItem="Owner" CaptionLocation="Top" Index="1" RelativeSize="26.931407942238266" IsNewNode="True" />
-                <LayoutItem Id="Progress" ViewItem="Progress" CaptionLocation="Top" Index="2" RelativeSize="45.05415162454874" IsNewNode="True" />
+                <LayoutItem Id="Oid" ViewItem="Oid" CaptionLocation="Top" Index="0" RelativeSize="11.768953068592058" IsNewNode="True" />
+                <LayoutItem Id="Owner" ViewItem="Owner" CaptionLocation="Top" Index="1" RelativeSize="16.750902527075812" IsNewNode="True" />
+                <LayoutItem Id="CropId" ViewItem="CropId" Index="2" RelativeSize="14.512635379061372" CaptionLocation="Top" IsNewNode="True" />
+                <LayoutItem Id="LandId" ViewItem="LandId" Index="3" RelativeSize="18.411552346570396" CaptionLocation="Top" IsNewNode="True" />
+                <LayoutItem Id="Progress" ViewItem="Progress" CaptionLocation="Top" Index="4" RelativeSize="38.55595667870036" IsNewNode="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="1" RelativeSize="16.666666666666668" IsNewNode="True">
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="1" RelativeSize="16.687116564417177" IsNewNode="True">
               <LayoutGroup Id="CropCycle" ShowCaption="True" Caption="Main" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                 <LayoutGroup Id="CropCycle_col1" ShowCaption="False" Index="0" RelativeSize="100" Direction="Horizontal" IsNewNode="True">
-                  <LayoutGroup Id="Autof4502262-9b42-4785-8f5d-628aa4a469fb" ShowCaption="False" Caption="Autof4502262-9b42-4785-8f5d-628aa4a469fb(10)" Index="0" RelativeSize="49.5964783565664" IsNewNode="True">
-                    <LayoutItem Id="CropId" ViewItem="CropId" Index="0" RelativeSize="30.476190476190474" IsNewNode="True" />
-                    <LayoutItem Id="LandId" ViewItem="LandId" Index="1" RelativeSize="22.857142857142858" IsNewNode="True" />
-                    <LayoutGroup Id="Auto9400e3e3-f42d-4ca8-98dc-78b2ffe6078e" ShowCaption="False" Caption="Auto9400e3e3-f42d-4ca8-98dc-78b2ffe6078e(14)" Direction="Horizontal" Index="2" RelativeSize="46.666666666666664" IsNewNode="True">
-                      <LayoutItem Id="TerminationType" ViewItem="TerminationType" Index="0" RelativeSize="50" IsNewNode="True" />
-                      <LayoutItem Id="TerminationReasonId" ViewItem="TerminationReasonId" Index="1" RelativeSize="50" IsNewNode="True" />
-                    </LayoutGroup>
-                  </LayoutGroup>
-                  <LayoutGroup Id="Autoa4e6fcbf-1105-427a-afa1-3d2019634276" ShowCaption="False" Caption="Autoa4e6fcbf-1105-427a-afa1-3d2019634276(14)" Index="1" RelativeSize="50.4035216434336" IsNewNode="True">
+                  <LayoutGroup Id="Autof4502262-9b42-4785-8f5d-628aa4a469fb" ShowCaption="False" Caption="Autof4502262-9b42-4785-8f5d-628aa4a469fb(10)" Index="0" RelativeSize="49.30300807043287" IsNewNode="True">
                     <LayoutItem Id="StartDate" ViewItem="StartDate" Index="0" RelativeSize="30.476190476190474" IsNewNode="True" />
                     <LayoutItem Id="EndDate" ViewItem="EndDate" Index="1" RelativeSize="69.52380952380952" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autoa4e6fcbf-1105-427a-afa1-3d2019634276" ShowCaption="False" Caption="Autoa4e6fcbf-1105-427a-afa1-3d2019634276(14)" Index="1" RelativeSize="50.69699192956713" IsNewNode="True">
+                    <LayoutItem Id="TerminationType" ViewItem="TerminationType" Index="0" RelativeSize="30.476190476190474" IsNewNode="True" />
+                    <LayoutItem Id="TerminationReasonId" ViewItem="TerminationReasonId" Index="1" RelativeSize="69.52380952380952" IsNewNode="True" />
                   </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
@@ -119,18 +120,18 @@
               </LayoutGroup>
               <LayoutGroup Id="Item2" ShowCaption="True" Caption="Audit" CaptionLocation="Top" Index="3" RelativeSize="100" Direction="Vertical" IsNewNode="True">
                 <LayoutGroup Id="Autoa521e54e-170d-45ab-9fa5-b91fb396da57" ShowCaption="False" Caption="Autoa521e54e-170d-45ab-9fa5-b91fb396da57(33)" Index="0" RelativeSize="100" Direction="Horizontal" IsNewNode="True">
-                  <LayoutGroup Id="Auto0eec4862-a930-4ac7-873c-4d3fdc29f797" ShowCaption="False" Caption="Auto0eec4862-a930-4ac7-873c-4d3fdc29f797(36)" Index="0" RelativeSize="49.96331621423331" IsNewNode="True">
+                  <LayoutGroup Id="Auto0eec4862-a930-4ac7-873c-4d3fdc29f797" ShowCaption="False" Caption="Auto0eec4862-a930-4ac7-873c-4d3fdc29f797(36)" Index="0" RelativeSize="49.88994864269993" IsNewNode="True">
                     <LayoutItem Id="CreatedBy" ViewItem="CreatedBy" Index="0" RelativeSize="30.476190476190474" IsNewNode="True" />
                     <LayoutItem Id="CreatedDate" ViewItem="CreatedDate" Index="1" RelativeSize="69.52380952380952" IsNewNode="True" />
                   </LayoutGroup>
-                  <LayoutGroup Id="Auto0bc4f2dc-3b86-4769-9f7c-9292d07d466c" ShowCaption="False" Caption="Auto0bc4f2dc-3b86-4769-9f7c-9292d07d466c(39)" Index="1" RelativeSize="50.03668378576669" IsNewNode="True">
+                  <LayoutGroup Id="Auto0bc4f2dc-3b86-4769-9f7c-9292d07d466c" ShowCaption="False" Caption="Auto0bc4f2dc-3b86-4769-9f7c-9292d07d466c(39)" Index="1" RelativeSize="50.11005135730007" IsNewNode="True">
                     <LayoutItem Id="ModifiedBy" ViewItem="ModifiedBy" Index="0" RelativeSize="30.476190476190474" IsNewNode="True" />
                     <LayoutItem Id="ModifiedDate" ViewItem="ModifiedDate" Index="1" RelativeSize="69.52380952380952" IsNewNode="True" />
                   </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
             </TabbedGroup>
-            <LayoutGroup Id="XPObject" RelativeSize="76.7156862745098" Caption="Oid" Index="2">
+            <LayoutGroup Id="XPObject" RelativeSize="76.68711656441718" Caption="Oid" Index="2">
               <LayoutItem Id="Oid" Removed="True" />
             </LayoutGroup>
             <LayoutGroup Id="CropCycle" Removed="True" />
@@ -138,10 +139,11 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="CropCycle_ListView" Caption="Crop Cycles" />
-    <ListView Id="Farm_ListView" Caption="Farms" />
-    <ListView Id="Land_ListView" Caption="Lands" />
-    <ListView Id="TerminationReason_ListView" Caption="Termination Reasons" />
-    <ListView Id="UnitOfMeasure_ListView" Caption="Unit Of Measures" />
+    <ListView Id="CropCycle_ListView" Caption="Crop Cycles" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="Farm_Lands_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="Farm_ListView" Caption="Farms" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="Land_ListView" Caption="Lands" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="TerminationReason_ListView" Caption="Termination Reasons" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="UnitOfMeasure_ListView" Caption="Unit Of Measures" ShowFindPanel="True" ShowAutoFilterRow="True" />
   </Views>
 </Application>
