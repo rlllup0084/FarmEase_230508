@@ -9,9 +9,9 @@ using RequiredAttribute = DevExpress.ExpressApp.Model.RequiredAttribute;
 
 namespace FarmEase_230508.Module.BusinessObjects {
     [DefaultClassOptions]
-    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     public class CropCycle : XPObject {
         private Crop _CropId;
+        private ApplicationUser _Owner;
         private Land _LandId;
         private DateTime _StartDate;
         private DateTime _EndDate;
@@ -117,7 +117,6 @@ namespace FarmEase_230508.Module.BusinessObjects {
         private DateTime _CreatedDate;
         private string _ModifiedBy;
         private DateTime _ModifiedDate;
-        private ApplicationUser _Owner;
 
         [Editable(false)]
         public string CreatedBy {

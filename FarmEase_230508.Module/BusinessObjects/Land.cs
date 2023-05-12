@@ -15,6 +15,8 @@ namespace FarmEase_230508.Module.BusinessObjects {
     public class Land : XPObject {
         private string _Name;
         private string _Description;
+        private ApplicationUser _Owner;
+        private Farm _Farm;
         private decimal _Area;
         private UnitOfMeasure _AreaUom;
 
@@ -63,8 +65,6 @@ namespace FarmEase_230508.Module.BusinessObjects {
         private DateTime _CreatedDate;
         private string _ModifiedBy;
         private DateTime _ModifiedDate;
-        private ApplicationUser _Owner;
-        private Farm _Farm;
 
         [Editable(false)]
         public string CreatedBy {

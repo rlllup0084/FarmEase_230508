@@ -14,6 +14,9 @@ namespace FarmEase_230508.Module.BusinessObjects {
     [DefaultProperty("Code")]
     public class UnitOfMeasure : BaseObject {
 
+        private string _Code;
+        private string _Name;
+
         [Required]
         [RuleUniqueValue]
         public string Code {
@@ -32,8 +35,6 @@ namespace FarmEase_230508.Module.BusinessObjects {
         private DateTime _CreatedDate;
         private string _ModifiedBy;
         private DateTime _ModifiedDate;
-        private string _Code;
-        private string _Name;
 
         [Editable(false)]
         public string CreatedBy {
