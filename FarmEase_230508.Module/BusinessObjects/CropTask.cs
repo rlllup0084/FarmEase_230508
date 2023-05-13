@@ -1,28 +1,35 @@
-﻿using DevExpress.Data.Filtering;
-using DevExpress.ExpressApp;
+﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
-using DevExpress.Persistent.BaseImpl;
-using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using AssociationAttribute = DevExpress.Xpo.AssociationAttribute;
 using RequiredAttribute = DevExpress.ExpressApp.Model.RequiredAttribute;
 
 namespace FarmEase_230508.Module.BusinessObjects {
     [DefaultClassOptions]
-    [DefaultProperty("Name")]
-    public class Crop : BaseObject {
-
-        private string _Name;
+    public class CropTask : XPObject {
+        private Crop _CropId;
+        private CropTask _ParentId;
+        private string _Title;
         private string _Description;
-        private int? _Days = null;
+        private int _Days;
+
+        [Association("Crop-Tasks")]
+        public Crop CropId {
+            get { return _CropId; }
+            set { SetPropertyValue(nameof(CropId), ref _CropId, value); }
+        }
+
+        [Association("Parent-Tasks")]
+        public CropTask ParentId {
+            get { return _ParentId; }
+            set { SetPropertyValue(nameof(ParentId), ref _ParentId, value); }
+        }
 
         [Required]
-        [RuleUniqueValue]
-        public string Name {
-            get { return _Name; }
-            set { SetPropertyValue(nameof(Name), ref _Name, value); }
+        public string Title {
+            get { return _Title; }
+            set { SetPropertyValue(nameof(Title), ref _Title, value); }
         }
 
         public string Description {
@@ -30,30 +37,16 @@ namespace FarmEase_230508.Module.BusinessObjects {
             set { SetPropertyValue(nameof(Description), ref _Description, value); }
         }
 
-        public int? Days {
+        public int Days {
             get { return _Days; }
-            set { SetPropertyValue(nameof(Days), ref _Days, value); }
-        }
-
-        public int? TotalDays {
-            get {
-                if (!IsLoading && !IsSaving && _Days == null)
-                    UpdateTotalDays(false);
-                return _Days;
+            set { bool modified = SetPropertyValue(nameof(Days), ref _Days, value);
+                if (!IsLoading && !IsSaving && CropId != null && modified) {
+                    CropId.UpdateTotalDays(true);
+                }
             }
         }
 
-        public void UpdateTotalDays(bool forceChangeEvents) {
-            int? oldTotalDays = _Days;
-            int tempTotal = 0;
-            foreach (CropTask detail in Tasks)
-                tempTotal += detail.Days;
-            _Days = tempTotal;
-            if (forceChangeEvents)
-                OnChanged(nameof(Days), oldTotalDays, _Days);
-        }
-
-        [Association("Crop-Tasks"), Aggregated]
+        [Association("Parent-Tasks")]
         public XPCollection<CropTask> Tasks {
             get { return GetCollection<CropTask>(nameof(Tasks)); }
         }
@@ -91,7 +84,7 @@ namespace FarmEase_230508.Module.BusinessObjects {
 
         #endregion
 
-        public Crop(Session session)
+        public CropTask(Session session)
             : base(session) {
         }
         public override void AfterConstruction() {
