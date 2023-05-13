@@ -1,13 +1,15 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Base.General;
 using DevExpress.Xpo;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using AssociationAttribute = DevExpress.Xpo.AssociationAttribute;
 using RequiredAttribute = DevExpress.ExpressApp.Model.RequiredAttribute;
 
 namespace FarmEase_230508.Module.BusinessObjects {
     [DefaultClassOptions]
-    public class CropTask : XPObject {
+    public class CropTask : XPObject, ITreeNode {
         private Crop _CropId;
         private CropTask _ParentId;
         private int _Seq = 0;
@@ -94,6 +96,12 @@ namespace FarmEase_230508.Module.BusinessObjects {
             get { return _ModifiedDate; }
             set { SetPropertyValue(nameof(ModifiedDate), ref _ModifiedDate, value); }
         }
+
+        public string Name => Title;
+
+        public ITreeNode Parent => ParentId;
+
+        public IBindingList Children => Tasks;
 
         #endregion
 
