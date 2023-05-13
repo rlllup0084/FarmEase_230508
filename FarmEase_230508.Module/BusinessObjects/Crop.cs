@@ -16,6 +16,7 @@ namespace FarmEase_230508.Module.BusinessObjects {
 
         private string _Name;
         private string _Description;
+        private string _Notes;
         private int? _Days = null;
 
         [Required]
@@ -28,6 +29,12 @@ namespace FarmEase_230508.Module.BusinessObjects {
         public string Description {
             get { return _Description; }
             set { SetPropertyValue(nameof(Description), ref _Description, value); }
+        }
+
+        [Size(SizeAttribute.Unlimited)]
+        public string Notes {
+            get { return _Notes; }
+            set { SetPropertyValue(nameof(Notes), ref _Notes, value); }
         }
 
         public int? Days {

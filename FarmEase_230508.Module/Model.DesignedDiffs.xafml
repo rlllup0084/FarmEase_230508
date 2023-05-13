@@ -69,7 +69,40 @@
     <ListView Id="ApplicationUser_Farms_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" />
     <ListView Id="ApplicationUser_Lands_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" />
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="Crop_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="19.24019607843137">
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="Crop" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Crop_col1" ShowCaption="False" Index="0" RelativeSize="49.96331621423331" IsNewNode="True">
+                  <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="Description" ViewItem="Description" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="Days" ViewItem="Days" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="TotalDays" ViewItem="TotalDays" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Crop_col2" ShowCaption="False" Index="1" RelativeSize="50.03668378576669" IsNewNode="True">
+                  <LayoutItem Id="CreatedBy" ViewItem="CreatedBy" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="CreatedDate" ViewItem="CreatedDate" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="ModifiedBy" ViewItem="ModifiedBy" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="ModifiedDate" ViewItem="ModifiedDate" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item1" ShowCaption="True" Caption="Notes" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Notes" ViewItem="Notes" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="Crop" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="Tasks_Group" Direction="Vertical" RelativeSize="80.75980392156863" Index="1">
+            <LayoutItem Id="Tasks" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Removed="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Crop_ListView" Caption="Crops" NewItemRowPosition="None" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <ListView Id="Crop_Tasks_ListView" AllowEdit="True" ShowAutoFilterRow="True" ShowFindPanel="True" />
     <DetailView Id="CropCycle_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -140,6 +173,44 @@
       </Layout>
     </DetailView>
     <ListView Id="CropCycle_ListView" Caption="Crop Cycles" ShowAutoFilterRow="True" ShowFindPanel="True" />
+    <DetailView Id="CropTask_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="22.181372549019606">
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="CropTask" ShowCaption="True" Caption="Crop Task" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="CropTask_col1" ShowCaption="False" Index="0" RelativeSize="49.96331621423331" IsNewNode="True">
+                  <LayoutItem Id="ParentId" ViewItem="ParentId" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                  <LayoutItem Id="Title" ViewItem="Title" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="Description" ViewItem="Description" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="Days" ViewItem="Days" Index="3" RelativeSize="41.1764705882353" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="CropTask_col2" ShowCaption="False" Index="1" RelativeSize="50.03668378576669" IsNewNode="True">
+                  <LayoutItem Id="Oid" ViewItem="Oid" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                  <LayoutItem Id="CreatedBy" ViewItem="CreatedBy" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="CreatedDate" ViewItem="CreatedDate" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="ModifiedBy" ViewItem="ModifiedBy" Index="3" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="ModifiedDate" ViewItem="ModifiedDate" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Tasks_Group" ShowCaption="True" Caption="Tasks" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Tasks" ViewItem="Tasks" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="XPObject" RelativeSize="78.15950920245399" Caption="Oid" Index="1" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="CropTask" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="77.81862745098039">
+            <LayoutItem Id="Notes" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="Tasks_Group" Removed="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="CropTask_ListView" AllowEdit="True" ShowAutoFilterRow="False" ShowFindPanel="False" />
+    <ListView Id="CropTask_Tasks_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" AllowEdit="True" />
     <ListView Id="Farm_Lands_ListView" ShowAutoFilterRow="True" ShowFindPanel="True" />
     <ListView Id="Farm_ListView" Caption="Farms" ShowAutoFilterRow="True" ShowFindPanel="True" />
     <ListView Id="Land_ListView" Caption="Lands" ShowAutoFilterRow="True" ShowFindPanel="True" />

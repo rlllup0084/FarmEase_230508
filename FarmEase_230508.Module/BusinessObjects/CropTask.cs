@@ -10,8 +10,10 @@ namespace FarmEase_230508.Module.BusinessObjects {
     public class CropTask : XPObject {
         private Crop _CropId;
         private CropTask _ParentId;
+        private int _Seq = 0;
         private string _Title;
         private string _Description;
+        private string _Notes;
         private int _Days;
 
         [Association("Crop-Tasks")]
@@ -26,6 +28,11 @@ namespace FarmEase_230508.Module.BusinessObjects {
             set { SetPropertyValue(nameof(ParentId), ref _ParentId, value); }
         }
 
+        public int Seq {
+            get { return _Seq; }
+            set { SetPropertyValue(nameof(Seq), ref _Seq, value); }
+        }
+
         [Required]
         public string Title {
             get { return _Title; }
@@ -35,6 +42,12 @@ namespace FarmEase_230508.Module.BusinessObjects {
         public string Description {
             get { return _Description; }
             set { SetPropertyValue(nameof(Description), ref _Description, value); }
+        }
+
+        [Size(SizeAttribute.Unlimited)]
+        public string Notes {
+            get { return _Notes; }
+            set { SetPropertyValue(nameof(Notes), ref _Notes, value); }
         }
 
         public int Days {
