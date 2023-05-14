@@ -24,6 +24,7 @@ using FarmEase_230508.WebApi.JWT;
 using DevExpress.ExpressApp.Security.Authentication;
 using DevExpress.ExpressApp.Security.Authentication.ClientServer;
 using DevExpress.ExpressApp.Core;
+using FarmEase_230508.Module.BusinessObjects;
 
 namespace FarmEase_230508.Blazor.Server;
 
@@ -138,6 +139,8 @@ public class Startup {
         services
             .AddXafWebApi(Configuration, options => {
                 // Use options.BusinessObject<YourBusinessObject>() to make the Business Object available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
+                options.BusinessObject<ApplicationUser>();
+                options.BusinessObject<CropTask>();
             })
             .AddXpoServices();
         services

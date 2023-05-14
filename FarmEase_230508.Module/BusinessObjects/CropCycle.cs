@@ -111,6 +111,11 @@ namespace FarmEase_230508.Module.BusinessObjects {
             set { SetPropertyValue(nameof(Progress), ref _Progress, value); }
         }
 
+        [Association("CropCycle-Tasks"), Aggregated]
+        public XPCollection<CropCycleTask> Tasks {
+            get { return GetCollection<CropCycleTask>(nameof(Tasks)); }
+        }
+
         #region Audit Fields
 
         private string _CreatedBy;

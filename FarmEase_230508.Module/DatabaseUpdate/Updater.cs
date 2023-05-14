@@ -11,11 +11,13 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using FarmEase_230508.Module.BusinessObjects;
 using DevExpress.CodeParser;
+using Newtonsoft.Json;
 
 namespace FarmEase_230508.Module.DatabaseUpdate;
 
 // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Updating.ModuleUpdater
 public class Updater : ModuleUpdater {
+
     public Updater(IObjectSpace objectSpace, Version currentDBVersion) :
         base(objectSpace, currentDBVersion) {
     }
@@ -27,9 +29,12 @@ public class Updater : ModuleUpdater {
         //    theObject = ObjectSpace.CreateObject<DomainObject1>();
         //    theObject.Name = name;
         //}
+
+        //UploadMultipleCropTasks();
+
 #if !RELEASE
         ApplicationUser sampleUser = ObjectSpace.FirstOrDefault<ApplicationUser>(u => u.UserName == "User");
-        if(sampleUser == null) {
+        if (sampleUser == null) {
             sampleUser = ObjectSpace.CreateObject<ApplicationUser>();
             sampleUser.UserName = "User";
             // Set a password if the standard authentication type is used
@@ -46,7 +51,7 @@ public class Updater : ModuleUpdater {
         CreateFarmerRole();
 
         ApplicationUser userAdmin = ObjectSpace.FirstOrDefault<ApplicationUser>(u => u.UserName == "Admin");
-        if(userAdmin == null) {
+        if (userAdmin == null) {
             userAdmin = ObjectSpace.CreateObject<ApplicationUser>();
             userAdmin.UserName = "Admin";
             // Set a password if the standard authentication type is used
@@ -57,17 +62,41 @@ public class Updater : ModuleUpdater {
             ObjectSpace.CommitChanges(); //This line persists created object(s).
             ((ISecurityUserWithLoginInfo)userAdmin).CreateUserLoginInfo(SecurityDefaults.PasswordAuthentication, ObjectSpace.GetKeyValueAsString(userAdmin));
         }
-		// If a role with the Administrators name doesn't exist in the database, create this role
+        // If a role with the Administrators name doesn't exist in the database, create this role
         PermissionPolicyRole adminRole = ObjectSpace.FirstOrDefault<PermissionPolicyRole>(r => r.Name == "Administrators");
-        if(adminRole == null) {
+        if (adminRole == null) {
             adminRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
             adminRole.Name = "Administrators";
         }
         adminRole.IsAdministrative = true;
-		userAdmin.Roles.Add(adminRole);
+        userAdmin.Roles.Add(adminRole);
         ObjectSpace.CommitChanges(); //This line persists created object(s).
 #endif
     }
+
+    private void UploadMultipleCropTasks() {
+        // Load and deserialize the JSON data from a file or any other source
+        string jsonData = File.ReadAllText("D:\\Repos\\CropTasks Upload.json");
+        List<CropTaskTemp> dataObjects = JsonConvert.DeserializeObject<List<CropTaskTemp>>(jsonData);
+
+        // Create and save the data objects
+        foreach (var dataObject in dataObjects) {
+            Crop crop = ObjectSpace.GetObjectByKey<Crop>(dataObject.CropId);
+            CropTask cropTask = ObjectSpace.GetObjectByKey<CropTask>(dataObject.ParentId);
+            CropTask newEntity = ObjectSpace.CreateObject<CropTask>();
+            newEntity.CropId = crop;
+            newEntity.Title = dataObject.Title;
+            newEntity.Description = dataObject.Description;
+            newEntity.ParentId = cropTask;
+            newEntity.Seq = dataObject.Seq;
+            newEntity.Days = dataObject.Days;
+            newEntity.Notes = dataObject.Notes;
+            // Set other properties as needed
+        }
+
+        ObjectSpace.CommitChanges(); // Save the changes to the database
+    }
+
     public override void UpdateDatabaseBeforeUpdateSchema() {
         base.UpdateDatabaseBeforeUpdateSchema();
         //if(CurrentDBVersion < new Version("1.1.0.0") && CurrentDBVersion > new Version("0.0.0.0")) {
@@ -107,5 +136,28 @@ public class Updater : ModuleUpdater {
             farmerRole.AddObjectPermissionFromLambda<Land>(SecurityOperations.Delete, lnd => lnd.Owner.Oid == (Guid)CurrentUserIdOperator.CurrentUserId(), SecurityPermissionState.Allow);
         }
 
+    }
+
+    public class GuidConverter : JsonConverter<Guid> {
+        public override Guid ReadJson(JsonReader reader, Type objectType, Guid existingValue, bool hasExistingValue, JsonSerializer serializer) {
+            if (reader.TokenType == JsonToken.String && Guid.TryParse((string)reader.Value, out Guid result)) {
+                return result;
+            }
+            return existingValue;
+        }
+
+        public override void WriteJson(JsonWriter writer, Guid value, JsonSerializer serializer) {
+            writer.WriteValue(value.ToString());
+        }
+    }
+
+    public class CropTaskTemp {
+        public Guid CropId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int ParentId { get; set; }
+        public int Seq { get; set; }
+        public int Days { get; set; }
+        public string Notes { get; set; }
     }
 }
