@@ -5,6 +5,8 @@
       <Item Id="Default">
         <Items>
           <Item Id="MyDetails" Visible="False" />
+          <Item Id="Resource_ListView" Removed="True" />
+          <Item Id="ResourceType_ListView" Removed="True" />
         </Items>
       </Item>
     </Items>
