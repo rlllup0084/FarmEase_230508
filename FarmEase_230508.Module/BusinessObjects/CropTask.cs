@@ -58,7 +58,28 @@ namespace FarmEase_230508.Module.BusinessObjects {
                 if (!IsLoading && !IsSaving && CropId != null && modified) {
                     CropId.UpdateTotalDays(true);
                 }
+                if (!IsLoading && !IsSaving && ParentId != null && modified) {
+                    ParentId.UpdateTotalDays(true);
+                }
             }
+        }
+
+        public int? TotalDays {
+            get {
+                if (!IsLoading && !IsSaving)
+                    UpdateTotalDays(false);
+                return _Days;
+            }
+        }
+
+        public void UpdateTotalDays(bool forceChangeEvents) {
+            int? oldTotalDays = _Days;
+            int tempTotal = 0;
+            foreach (CropTask detail in Tasks)
+                tempTotal += detail.Days;
+            _Days = tempTotal == 0 ? oldTotalDays.Value : tempTotal;
+            if (forceChangeEvents)
+                OnChanged(nameof(Days), oldTotalDays, _Days);
         }
 
         [Association("Parent-Tasks")]
