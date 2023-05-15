@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmEase_230508.Maui.Views.PushNotifyDemoPage"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <Grid>
+            <Button VerticalOptions="Center"
+                    Margin="25,0,25,20"
+                    Text="Show Notify"
+                    Style="{StaticResource PrimaryButton}"
+                    Clicked="OnButtonClicked"/>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

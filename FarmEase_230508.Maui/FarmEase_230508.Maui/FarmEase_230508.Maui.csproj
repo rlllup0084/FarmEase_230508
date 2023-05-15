@@ -53,6 +53,7 @@
 		<PackageReference Include="DevExpress.Maui.Editors" Version="22.2.5" />
 		<PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Plugin.LocalNotification" Version="10.1.4" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
 		<TrimmableAssembly Include="DevExpress.Data.v22.2" />
 	</ItemGroup>
@@ -66,6 +67,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoadingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PushNotifyDemoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

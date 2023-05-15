@@ -29,6 +29,9 @@
         <Tab Title="Popup" Icon="popup">
             <ShellContent ContentTemplate="{DataTemplate local:PopupPage}" />
         </Tab>
+        <Tab Title="Notify" Icon="notify">
+            <ShellContent ContentTemplate="{DataTemplate local:PushNotifyDemoPage}" />
+        </Tab>
     </TabBar>
     <TabBar>
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"
