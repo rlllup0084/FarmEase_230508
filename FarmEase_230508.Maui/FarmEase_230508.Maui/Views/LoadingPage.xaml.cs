@@ -1,3 +1,5 @@
+using System.IdentityModel.Tokens.Jwt;
+
 namespace FarmEase_230508.Maui.Views;
 
 public partial class LoadingPage : ContentPage
@@ -19,6 +21,20 @@ public partial class LoadingPage : ContentPage
     async Task<bool> isAuthenticated() {
         await Task.Delay(2000);
         var hasAuth = await SecureStorage.GetAsync("jwt_token");
-        return !(hasAuth == null);
+        if (hasAuth != null && IsTokenValid(hasAuth)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public bool IsTokenValid(string token) {
+        var jwtHandler = new JwtSecurityTokenHandler();
+        var jwtToken = jwtHandler.ReadJwtToken(token);
+
+        // Check if the token has expired
+        var expirationTime = jwtToken.ValidTo;
+        var currentTime = DateTime.UtcNow;
+        return expirationTime > currentTime;
     }
 }
