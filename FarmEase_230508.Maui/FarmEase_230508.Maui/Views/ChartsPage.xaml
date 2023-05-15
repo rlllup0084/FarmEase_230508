@@ -4,6 +4,7 @@
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              x:Class= "FarmEase_230508.Maui.Views.ChartsPage"
              Title="{Binding Title}"
+             BackgroundColor="{DynamicResource BackgroundColor}"
              IconImageSource="charts">
     <ContentPage.Content>
         <Grid>

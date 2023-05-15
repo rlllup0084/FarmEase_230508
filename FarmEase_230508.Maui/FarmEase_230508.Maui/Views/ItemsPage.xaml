@@ -5,6 +5,7 @@
              xmlns:local="clr-namespace:FarmEase_230508.Maui.ViewModels"
              xmlns:model="clr-namespace:FarmEase_230508.Maui.Models"
              Title="{Binding Title}"
+             BackgroundColor="{DynamicResource BackgroundColor}"
              IconImageSource="browse"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="true"

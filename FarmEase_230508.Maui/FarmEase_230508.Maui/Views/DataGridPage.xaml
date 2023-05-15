@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
              Title="{Binding Title}"
+             BackgroundColor="{DynamicResource BackgroundColor}"
              IconImageSource="grid"
              x:Class= "FarmEase_230508.Maui.Views.DataGridPage">    
     <ContentPage.Content>

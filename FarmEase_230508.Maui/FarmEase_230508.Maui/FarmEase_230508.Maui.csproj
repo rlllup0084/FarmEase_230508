@@ -38,6 +38,10 @@
 		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Images\logo.svg" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="DevExpress.Maui.Charts" Version="22.2.5" />
@@ -48,5 +52,15 @@
 		<PackageReference Include="DevExpress.Maui.Editors" Version="22.2.5" />
 		<PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.5" />
 		<TrimmableAssembly Include="DevExpress.Data.v22.2" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <MauiXaml Update="Themes\Dark.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Themes\Light.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 </Project>

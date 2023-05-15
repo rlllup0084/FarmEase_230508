@@ -4,7 +4,7 @@
              xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
              Title="{Binding Title}"
              IconImageSource="scheduler"
-             BackgroundColor="{StaticResource NormalBackgroundColor}"
+             BackgroundColor="{StaticResource BackgroundColor}"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="true"
              x:Class= "FarmEase_230508.Maui.Views.SchedulerPage">

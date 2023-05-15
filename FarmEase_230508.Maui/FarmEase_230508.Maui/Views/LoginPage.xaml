@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             BackgroundColor="{DynamicResource BackgroundColor}"
              x:Class= "FarmEase_230508.Maui.Views.LoginPage">
     <ContentPage.Content>
         <Grid ColumnSpacing="20" Padding="15" VerticalOptions="Center">
