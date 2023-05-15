@@ -6,9 +6,13 @@
          xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
          ios:Page.UseSafeArea="true"
         x:Class= "FarmEase_230508.Maui.Views.MainPage">
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:LoadingPage}"
+        Route="loading" />
     <TabBar>
         <Tab Title="About" Icon="info">
-            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" Route= "FarmEase_230508.Maui.Views.AboutPage"  />
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" Route= "about"  />
         </Tab>
         <Tab Title ="Browse" Icon="browse">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
@@ -28,7 +32,7 @@
     </TabBar>
     <TabBar>
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"
-                      Route= "FarmEase_230508.Maui.Views.LoginPage" />
+                      Route= "login" />
     </TabBar>
 
 </Shell>

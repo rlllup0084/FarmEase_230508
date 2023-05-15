@@ -44,6 +44,7 @@
 
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
 		<PackageReference Include="DevExpress.Maui.Charts" Version="22.2.5" />
 		<PackageReference Include="DevExpress.Maui.CollectionView" Version="22.2.5" />
 		<PackageReference Include="DevExpress.Maui.Core" Version="22.2.5" />
@@ -51,6 +52,7 @@
 		<PackageReference Include="DevExpress.Maui.Controls" Version="22.2.5" />
 		<PackageReference Include="DevExpress.Maui.Editors" Version="22.2.5" />
 		<PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<TrimmableAssembly Include="DevExpress.Data.v22.2" />
 	</ItemGroup>
 
@@ -60,6 +62,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Themes\Light.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoadingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

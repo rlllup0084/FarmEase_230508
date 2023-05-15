@@ -11,5 +11,10 @@ namespace FarmEase_230508.Maui.Views {
             InitializeComponent();
             BindingContext = new LoginViewModel();
         }
+
+        protected override bool OnBackButtonPressed() {
+            Application.Current.Quit();
+            return true;
+        }
     }
 }

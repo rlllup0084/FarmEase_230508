@@ -14,6 +14,8 @@ namespace FarmEase_230508.Maui.ViewModels {
 
         public INavigationService Navigation => DependencyService.Get<INavigationService>();
 
+        public ILoginService LoginService => DependencyService.Get<ILoginService>();
+
         public bool IsBusy {
             get { return this.isBusy; }
             set { SetProperty(ref this.isBusy, value); }
