@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarmEase_230508.E2E.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorComponents", "BlazorComponents\BlazorComponents.csproj", "{892D8A0F-BB9F-4400-91FE-96BDE2AFDA49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmEase_230508.Maui", "FarmEase_230508.Maui\FarmEase_230508.Maui\FarmEase_230508.Maui.csproj", "{558C57FE-F777-4ECE-B61E-8FE2BCE7BB09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarmEase_230508.Maui", "FarmEase_230508.Maui\FarmEase_230508.Maui\FarmEase_230508.Maui.csproj", "{558C57FE-F777-4ECE-B61E-8FE2BCE7BB09}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiThemes", "MauiThemes\MauiThemes.csproj", "{8AEE5AE8-D75E-4370-99DC-666001FCA2FF}"
 EndProject

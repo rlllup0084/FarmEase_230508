@@ -20,6 +20,11 @@ namespace FarmEase_230508.Maui.ViewModels {
             Items = new ObservableCollection<CropCycleData>();
             LoadData();
             PullToRefreshCommand = new Command(ExecutePullToRefreshCommand);
+            AddCommand = new Command(ExecuteAddCommand);
+        }
+
+        async void ExecuteAddCommand() {
+            await Navigation.NavigateToAsync<AddCropCycleViewModel>();
         }
 
         public string UserName {
@@ -66,6 +71,8 @@ namespace FarmEase_230508.Maui.ViewModels {
 
             });
         }
+
+        public Command AddCommand { get; }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query) {
             throw new NotImplementedException();

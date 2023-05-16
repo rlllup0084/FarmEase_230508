@@ -14,6 +14,7 @@ namespace FarmEase_230508.Maui {
             Routing.RegisterRoute(typeof(LoginPage).FullName, typeof(LoginPage));
             Routing.RegisterRoute(typeof(ItemDetailPage).FullName, typeof(ItemDetailPage));
             Routing.RegisterRoute(typeof(NewItemPage).FullName, typeof(NewItemPage));
+            Routing.RegisterRoute(typeof(AddCropCyclePage).FullName, typeof(AddCropCyclePage));
             MainPage = new MainPage();
 
             AppTheme currentTheme = Application.Current.RequestedTheme;
