@@ -10,6 +10,7 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:LoadingPage}"
         Route="loading" />
+    <ShellContent ContentTemplate="{DataTemplate local:TodoItemPage}" Route="TodoItemPage"/>
     <TabBar>
         <Tab Title="About" Icon="info">
             <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" Route= "about"  />
@@ -31,6 +32,9 @@
         </Tab>
         <Tab Title="Notify" Icon="notify">
             <ShellContent ContentTemplate="{DataTemplate local:PushNotifyDemoPage}" />
+        </Tab>
+        <Tab Title="Todo" Icon="todo">
+            <ShellContent ContentTemplate="{DataTemplate local:TodoListPage}" Route="TodoList" />
         </Tab>
     </TabBar>
     <TabBar>

@@ -54,6 +54,8 @@
 		<PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Plugin.LocalNotification" Version="10.1.4" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
 		<TrimmableAssembly Include="DevExpress.Data.v22.2" />
 	</ItemGroup>
@@ -70,6 +72,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PushNotifyDemoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TodoItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TodoListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

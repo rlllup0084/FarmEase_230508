@@ -56,7 +56,8 @@ namespace FarmEase_230508.Maui.ViewModels {
                 return;
             }
             HasError = false;
-            await Navigation.NavigateToAsync<AboutViewModel>(true);
+            //await Navigation.NavigateToAsync<AboutViewModel>(true);
+            await Shell.Current.GoToAsync("///about");
         }
 
         bool ValidateLogin() {

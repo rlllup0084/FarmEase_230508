@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
+using FarmEase_230508.Maui.Data;
+using FarmEase_230508.Maui.Views;
 using Plugin.LocalNotification;
 
 namespace FarmEase_230508.Maui {
@@ -19,6 +21,11 @@ namespace FarmEase_230508.Maui {
                     fonts.AddFont("univia-pro-regular.ttf", "Univia-Pro");
                     fonts.AddFont("univia-pro-medium.ttf", "Univia-Pro Medium");
                 });
+
+            builder.Services.AddSingleton<TodoListPage>();
+            builder.Services.AddTransient<TodoItemPage>();
+
+            builder.Services.AddSingleton<TodoItemDatabase>();
 
             return builder.Build();
         }
