@@ -15,6 +15,9 @@
         <Tab Title="About" Icon="info">
             <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" Route= "about"  />
         </Tab>
+        <Tab Title ="Cycle" Icon="cycle">
+            <ShellContent ContentTemplate="{DataTemplate local:CropCycleListPage}" Route="cycle" />
+        </Tab>
         <Tab Title ="Browse" Icon="browse">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>

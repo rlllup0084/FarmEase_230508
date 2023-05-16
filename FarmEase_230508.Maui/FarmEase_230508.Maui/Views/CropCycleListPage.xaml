@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             xmlns:local="clr-namespace:FarmEase_230508.Maui.ViewModels"
+             xmlns:views="clr-namespace:FarmEase_230508.Maui.Views"
+             x:Class="FarmEase_230508.Maui.Views.CropCycleListPage"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <views:CropIdToImageConverter x:Key="cropIdToImageConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="grid"
+                          ItemsSource="{Binding Items}"
+                          IsPullToRefreshEnabled="true"
+                          PullToRefreshCommand="{Binding PullToRefreshCommand}" 
+                          IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                          IsColumnHeaderVisible="False" SelectionMode="None"
+                          BackgroundColor="{DynamicResource BackgroundColor}">
+            <dxg:DataGridView.AdvancedColumnLayout>
+                <dxg:AdvancedColumnLayout>
+                    <dxg:AdvancedColumnLayout.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </dxg:AdvancedColumnLayout.ColumnDefinitions>
+                    <dxg:AdvancedColumnLayout.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </dxg:AdvancedColumnLayout.RowDefinitions>
+                </dxg:AdvancedColumnLayout>
+            </dxg:DataGridView.AdvancedColumnLayout>
+            <dxg:TemplateColumn FieldName="LineApprovalStatus" Row="0" Column="0" RowSpan="2">
+                <dxg:TemplateColumn.DisplayTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path=Item.CropId, Converter={StaticResource cropIdToImageConverter}}" 
+                                HeightRequest="24" WidthRequest="24" />
+                    </DataTemplate>
+                </dxg:TemplateColumn.DisplayTemplate>
+            </dxg:TemplateColumn>
+            <dxg:TextColumn FieldName="Owner" Caption="Owner" Row="0" Column="1" ColumnSpan="2"/>
+            <dxg:DateColumn FieldName="StartDate" Caption="Start Date" DisplayFormat="MM/dd/yyyy" Row="1" Column="1"/>
+            <dxg:TextColumn FieldName="Status" Caption="Status" Row="1" ColumnSpan="2"/>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</ContentPage>

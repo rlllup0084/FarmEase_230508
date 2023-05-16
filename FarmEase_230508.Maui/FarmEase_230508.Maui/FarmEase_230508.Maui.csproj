@@ -40,7 +40,9 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\account.svg" />
+	  <None Remove="Resources\Images\hold.svg" />
 	  <None Remove="Resources\Images\logo.svg" />
+	  <None Remove="Resources\Images\release.svg" />
 	</ItemGroup>
 
 
@@ -70,6 +72,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AccountPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CropCycleListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoadingPage.xaml">
