@@ -27,6 +27,9 @@
         <Tab Title="Charts" Icon="charts">
             <ShellContent ContentTemplate="{DataTemplate local:ChartsPage}" />
         </Tab>
+        <Tab Title ="Account" Icon="account">
+            <ShellContent ContentTemplate="{DataTemplate local:AccountPage}" />
+        </Tab>
         <Tab Title="Popup" Icon="popup">
             <ShellContent ContentTemplate="{DataTemplate local:PopupPage}" />
         </Tab>

@@ -7,7 +7,7 @@ using FarmEase_230508.Maui.Models;
 namespace FarmEase_230508.Maui.Services {
     public class LoginService : ILoginService {
         private static readonly HttpClient HttpClient = new HttpClient();
-        private readonly string _apiUrl = ON.Platform(android: "http://192.168.1.104:5000/api/Authentication/", iOS: "http://192.168.1.104:5000/api/Authentication/");
+        private readonly string _apiUrl = ON.Platform(android: "http://192.168.1.102:5000/api/Authentication/", iOS: "http://192.168.1.102:5000/api/Authentication/");
 
         public LoginService() {
         }
@@ -37,8 +37,8 @@ namespace FarmEase_230508.Maui.Services {
         public async Task<bool> Logout() {
             await Task.CompletedTask;
 
-            SecureStorage.Remove("gpo_jwt_token");
-            SecureStorage.Remove("gpo_auth_id");
+            SecureStorage.Remove("jwt_token");
+            SecureStorage.Remove("auth_id");
 
             return true;
         }
