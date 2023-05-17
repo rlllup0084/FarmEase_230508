@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace FarmEase_230508.Maui.ViewModels {
-    public class CropCycleListViewModel : BaseViewModel, IQueryAttributable {
+    public class CropCycleListViewModel : BaseViewModel {
         CropCycleDatabase database;
         private string userName;
         public CropCycleListViewModel() {
@@ -21,7 +21,15 @@ namespace FarmEase_230508.Maui.ViewModels {
             LoadData();
             PullToRefreshCommand = new Command(ExecutePullToRefreshCommand);
             AddCommand = new Command(ExecuteAddCommand);
+            ShowCropCycleTasks = new Command<CropCycleData>(ExecuteShowCropCycleTasks);
         }
+
+        async void ExecuteShowCropCycleTasks(CropCycleData cropCycleData) {
+            //Console.WriteLine(purchaseOrder.Id);
+            await Navigation.NavigateToAsync<CropCycleTasksListViewModel>(cropCycleData.CropCycleId.ToString());
+        }
+
+        public Command<CropCycleData> ShowCropCycleTasks { get; }
 
         async void ExecuteAddCommand() {
             await Navigation.NavigateToAsync<AddCropCycleViewModel>();
@@ -74,8 +82,5 @@ namespace FarmEase_230508.Maui.ViewModels {
 
         public Command AddCommand { get; }
 
-        public void ApplyQueryAttributes(IDictionary<string, object> query) {
-            throw new NotImplementedException();
-        }
     }
 }

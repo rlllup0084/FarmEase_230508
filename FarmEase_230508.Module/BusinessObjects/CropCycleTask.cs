@@ -24,7 +24,8 @@ namespace FarmEase_230508.Module.BusinessObjects {
         private RecurrenceType _RecType;
         private int _RecValue;
         private CropCycleTaskStatus _Status;
-
+        private string _Notes;
+        private int _Days;
 
         [Association("CropCycle-Tasks")]
         public CropCycle CropCycleId {
@@ -52,6 +53,17 @@ namespace FarmEase_230508.Module.BusinessObjects {
         public string Description {
             get { return _Description; }
             set { SetPropertyValue(nameof(Description), ref _Description, value); }
+        }
+
+        public int Days {
+            get { return _Days; }
+            set { SetPropertyValue(nameof(Days), ref _Days, value); }
+        }
+
+        [Size(SizeAttribute.Unlimited)]
+        public string Notes {
+            get { return _Notes; }
+            set { SetPropertyValue(nameof(Notes), ref _Notes, value); }
         }
 
         public int MainSeq {

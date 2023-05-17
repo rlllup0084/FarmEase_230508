@@ -82,11 +82,14 @@ namespace FarmEase_230508.Maui.ViewModels {
                         Title = cropCycleTask.Title,
                         Description = cropCycleTask.Description,
                         StartDate = cropCycleTask.StartDate,
+                        EndDate = cropCycleTask.EndDate,
                         Seq = cropCycleTask.Seq,
                         MainSeq = cropCycleTask.MainSeq,
                         RecType = cropCycleTask.RecType,
                         RecValue = cropCycleTask.RecValue,
-                        Status = isValidStatus ? status : CropCycleStatus.NotStarted
+                        Status = isValidStatus ? status : CropCycleStatus.NotStarted,
+                        Notes = cropCycleTask.Notes,
+                        Days = cropCycleTask.Days
                     };
                     await database2.SaveCropCycleTaskAsync(cropCycleTaskData);
                     RecurrenceType recurrenceType;

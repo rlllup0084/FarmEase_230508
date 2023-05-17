@@ -21,5 +21,7 @@ namespace FarmEase_230508.Maui.Models {
         public string RecType { get; set; }
         public int RecValue { get; set; }
         public CropCycleStatus Status { get; set; }
+        public string Notes { get; set; }
+        public int Days { get; set; }
     }
 }

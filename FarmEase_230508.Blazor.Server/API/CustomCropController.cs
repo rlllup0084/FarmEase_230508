@@ -58,10 +58,10 @@ namespace FarmEase_230508.Blazor.Server.API {
         [HttpGet("/CustomCropTasks/CropCycleTasks/{cropCycleId}")]
         public IActionResult GetCropCyclesTaskByCycleId(int cropCycleId) {
             using IObjectSpace newObjectSpace = objectSpaceFactory.CreateObjectSpace<CropCycleTask>();
-            var cropCycles = newObjectSpace.GetObjects<CropCycleTask>(CriteriaOperator.Parse("[CropCycleId] = ?", cropCycleId));
-            var cyclesTasks = cropCycles.OrderBy(o => o.MainSeq).Select(o => new CropCycleTaskModel {
-                CropCycleId = o.CropCycleId.Oid,
-                TaskId = o.CropCycleId.Oid,
+            CropCycle cropCycle = newObjectSpace.GetObjectByKey<CropCycle>(cropCycleId);
+            var cyclesTasks = cropCycle.Tasks.OrderBy(o => o.MainSeq).Select(o => new CropCycleTaskModel {
+                CropCycleId = cropCycleId,
+                TaskId = o.TaskId.Oid,
                 ParentId = o.ParentId != null ? o.ParentId.Oid : null,
                 Title = o.Title,
                 Description = o.Description,
@@ -71,7 +71,9 @@ namespace FarmEase_230508.Blazor.Server.API {
                 MainSeq = o.MainSeq,
                 RecType = o.RecType,
                 RecValue = o.RecValue,
-                Status = o.Status
+                Status = o.Status,
+                Notes = o.Notes,
+                Days = o.Days
             }).ToList();
             return Ok(cyclesTasks);
         }
@@ -115,6 +117,8 @@ namespace FarmEase_230508.Blazor.Server.API {
                 newCropCycleTask.RecType = item.RecType;
                 newCropCycleTask.RecValue = item.RecValue;
                 newCropCycleTask.Status = CropCycleTaskStatus.NotStarted;
+                newCropCycleTask.Notes = item.Notes;
+                newCropCycleTask.Days = item.Days;
 
                 newCropCycle.Tasks.Add(newCropCycleTask);
             }
@@ -149,6 +153,8 @@ namespace FarmEase_230508.Blazor.Server.API {
         public RecurrenceType RecType { get; set; }
         public int RecValue { get; set; }
         public CropCycleTaskStatus Status { get; set; }
+        public string Notes { get; set; }
+        public int Days { get; set; }
     }
 
     public class CropCycleModel {

@@ -14,7 +14,6 @@
     <ContentPage.Resources>
         <views:CropIdToImageConverter x:Key="cropIdToImageConverter" />
     </ContentPage.Resources>
-    <!--<Button Text="+" Command="{Binding AddCommand}" FontSize="20" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,15,15" Style="{StaticResource PrimaryButton}" TextColor="{DynamicResource NormalHeaderText}"/>-->
     <ContentPage.Content>
         <dxg:DataGridView x:Name="grid"
                           ItemsSource="{Binding Items}"
@@ -23,6 +22,9 @@
                           IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
                           IsColumnHeaderVisible="False" SelectionMode="None"
                           BackgroundColor="{DynamicResource BackgroundColor}">
+            <dxg:DataGridView.StartSwipeItems>
+                <dxg:SwipeItem Caption="Show Tasks" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CropCycleListViewModel}}, Path=ShowCropCycleTasks}" BackgroundColor="Red" FontColor="White"/>
+            </dxg:DataGridView.StartSwipeItems>
             <dxg:DataGridView.AdvancedColumnLayout>
                 <dxg:AdvancedColumnLayout>
                     <dxg:AdvancedColumnLayout.ColumnDefinitions>

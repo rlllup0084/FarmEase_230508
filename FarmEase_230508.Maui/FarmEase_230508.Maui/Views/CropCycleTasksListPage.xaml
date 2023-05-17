@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             xmlns:local="clr-namespace:FarmEase_230508.Maui.ViewModels"
+             xmlns:views="clr-namespace:FarmEase_230508.Maui.Views"
+             x:Class="FarmEase_230508.Maui.Views.CropCycleTasksListPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <views:CycleTaskStatusImageConverter x:Key="cycleTaskStatusImageConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="grid"
+                          ItemsSource="{Binding Items}"
+                          IsColumnHeaderVisible="False" SelectionMode="None">
+            <dxg:DataGridView.StartSwipeItems>
+                <dxg:SwipeItem Caption="Not Started" 
+                               Command="{Binding Source={RelativeSource AncestorType={x:Type local:CropCycleTasksListViewModel}}, Path=SetNotStarted}" 
+                               BackgroundColor="Red" FontColor="White"/>
+                <dxg:SwipeItem Caption="In Progress" 
+                               Command="{Binding Source={RelativeSource AncestorType={x:Type local:CropCycleTasksListViewModel}}, Path=SetInProgress}" 
+                               BackgroundColor="Orange" FontColor="White"/>
+            </dxg:DataGridView.StartSwipeItems>
+            <dxg:DataGridView.EndSwipeItems>
+                <dxg:SwipeItem Caption="Completed" 
+                               Command="{Binding Source={RelativeSource AncestorType={x:Type local:CropCycleTasksListViewModel}}, Path=SetCompleted}" 
+                               BackgroundColor="Green" FontColor="White"/>
+                <dxg:SwipeItem Caption="Cancelled" 
+                               Command="{Binding Source={RelativeSource AncestorType={x:Type local:CropCycleTasksListViewModel}}, Path=SetCancelled}" 
+                               BackgroundColor="Blue" FontColor="White"/>
+            </dxg:DataGridView.EndSwipeItems>
+            <dxg:DataGridView.AdvancedColumnLayout>
+                <dxg:AdvancedColumnLayout>
+                    <dxg:AdvancedColumnLayout.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </dxg:AdvancedColumnLayout.ColumnDefinitions>
+                    <dxg:AdvancedColumnLayout.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </dxg:AdvancedColumnLayout.RowDefinitions>
+                </dxg:AdvancedColumnLayout>
+            </dxg:DataGridView.AdvancedColumnLayout>
+            <dxg:TemplateColumn FieldName="Status" Row="0" Column="0" RowSpan="3">
+                <dxg:TemplateColumn.DisplayTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path=Item.Status, Converter={StaticResource cycleTaskStatusImageConverter}}" 
+                                HeightRequest="24" WidthRequest="24" />
+                    </DataTemplate>
+                </dxg:TemplateColumn.DisplayTemplate>
+            </dxg:TemplateColumn>
+            <dxg:TextColumn FieldName="Title" Caption="Title" Row="0" Column="1" ColumnSpan="3"/>
+            <dxg:TextColumn FieldName="Description" Caption="Description" Row="1" Column="1" ColumnSpan="3"/>
+            <dxg:DateColumn FieldName="StartDate" Caption="Start Date" DisplayFormat="M/dd/yy" Row="2" Column="1"/>
+            <dxg:DateColumn FieldName="EndDate" Caption="End Date" DisplayFormat="M/d/yy" Row="2" Column="2"/>
+            <dxg:NumberColumn FieldName="Days" Row="2" Column="3"/>
+            <dxg:TextColumn FieldName="Notes" FontAttributes="Italic" Row="3" ColumnSpan="4"/>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</ContentPage>
