@@ -119,7 +119,7 @@ namespace FarmEase_230508.Blazor.Server.API {
                 newCropCycle.Tasks.Add(newCropCycleTask);
             }
             newObjectSpace.CommitChanges();
-            return Ok();
+            return Ok(newCropCycle.Oid);
         }
     }
 

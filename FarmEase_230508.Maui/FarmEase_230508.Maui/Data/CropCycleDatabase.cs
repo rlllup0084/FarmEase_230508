@@ -18,6 +18,7 @@ namespace FarmEase_230508.Maui.Data {
 
             Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
             var result = await Database.CreateTableAsync<CropCycleData>();
+            
         }
 
         public async Task<List<CropCycleData>> GetCropCycleByOwner(string owner) {
@@ -46,5 +47,7 @@ namespace FarmEase_230508.Maui.Data {
             await Init();
             return await Database.DeleteAsync(cropCycle);
         }
+
+        
     }
 }

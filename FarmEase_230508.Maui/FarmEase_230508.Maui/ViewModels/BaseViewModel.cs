@@ -16,6 +16,8 @@ namespace FarmEase_230508.Maui.ViewModels {
 
         public ILoginService LoginService => DependencyService.Get<ILoginService>();
 
+        public ICropCycleService CropCycleService => DependencyService.Get<ICropCycleService>();
+
         public bool IsBusy {
             get { return this.isBusy; }
             set { SetProperty(ref this.isBusy, value); }

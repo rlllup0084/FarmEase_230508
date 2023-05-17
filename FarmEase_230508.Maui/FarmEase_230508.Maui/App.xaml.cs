@@ -10,6 +10,7 @@ namespace FarmEase_230508.Maui {
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<NavigationService>();
             DependencyService.Register<LoginService>();
+            DependencyService.Register<CropCycleService>();
 
             Routing.RegisterRoute(typeof(LoginPage).FullName, typeof(LoginPage));
             Routing.RegisterRoute(typeof(ItemDetailPage).FullName, typeof(ItemDetailPage));

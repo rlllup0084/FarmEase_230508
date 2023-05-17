@@ -142,6 +142,8 @@ public class Startup {
                 options.BusinessObject<ApplicationUser>();
                 options.BusinessObject<CropTask>();
                 options.BusinessObject<Crop>();
+                options.BusinessObject<CropCycle>();
+                options.BusinessObject<CropCycleTask>();
             })
             .AddXpoServices();
         services

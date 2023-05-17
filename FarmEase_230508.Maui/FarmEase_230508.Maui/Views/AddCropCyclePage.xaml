@@ -39,9 +39,10 @@
                     <Label Text="Farming Made Easy" FontFamily="Univia-Pro" FontSize="14" HorizontalOptions="Center" TextColor="{DynamicResource NormalHeaderText}"/>
                 </StackLayout>
             </Grid>
-            <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto" Padding="25,50,25,15" RowSpacing="10">
+            <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto" Padding="25,50,25,15" RowSpacing="10">
                 <dxe:ComboBoxEdit LabelText="Select a crop"
                     ItemsSource="{Binding Crops}"
+                                  SelectedItem="{Binding Crop}"
                     FocusedBorderColor="{DynamicResource Primary}"
                     FocusedLabelColor="{DynamicResource NormalText}"
                     ItemTemplate="{StaticResource ItemTemplate}"
@@ -59,6 +60,7 @@
                 IsDateIconVisible="False"
                 ClearIconVisibility="Auto"
                 DisplayFormat="d"/>
+                <ActivityIndicator Margin="0,0,0,0" VerticalOptions="Center" IsRunning="{Binding IsInProcess}" HorizontalOptions="Center" WidthRequest="40" HeightRequest="40" Color="{DynamicResource Primary}" Grid.Row="2"/>
             </Grid>
             <Button Grid.Row="2" Margin="25,20,25,20"
                     Text="Create Crop Cycle"

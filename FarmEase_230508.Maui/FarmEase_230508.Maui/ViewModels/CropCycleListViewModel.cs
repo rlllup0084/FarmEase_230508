@@ -66,7 +66,7 @@ namespace FarmEase_230508.Maui.ViewModels {
             var items = await database.GetCropCycleByOwner(UserName);
             MainThread.BeginInvokeOnMainThread(() => {
                 Items.Clear();
-                foreach (var item in items)
+                foreach (CropCycleData item in items)
                     Items.Add(item);
 
             });
