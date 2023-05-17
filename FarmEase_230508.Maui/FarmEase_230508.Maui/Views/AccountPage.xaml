@@ -26,7 +26,11 @@
             <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto" Padding="25,100,25,15" RowSpacing="10">
                 <Label Grid.Row="1" Text="{Binding UserName}" FontSize="16" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="{DynamicResource NormalText}"/>
                 <Label Grid.Row="2" Text="Click the button below to logout." FontSize="16" HorizontalTextAlignment="Center" TextColor="{DynamicResource NormalText}"/>
-                <dxco:SimpleButton Grid.Row="3" Text="Logout" Command="{Binding LogoutCommand}" Style="{StaticResource PrimaryButton}" TextColor="{DynamicResource NormalHeaderText}"/>
+                <!--<dxco:SimpleButton Grid.Row="3" Text="Logout" Command="{Binding LogoutCommand}" Style="{StaticResource PrimaryButton}" TextColor="{StaticResource NormalHeaderText}"/>-->
+                <Button Grid.Row="3" Margin="25,20,25,20"
+                    Text="Logout"
+                    Style="{DynamicResource PrimaryButton}"
+                    Command="{Binding LogoutCommand}"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

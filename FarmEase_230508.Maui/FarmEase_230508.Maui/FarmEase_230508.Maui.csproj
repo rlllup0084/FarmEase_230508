@@ -40,6 +40,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\account.svg" />
+	  <None Remove="Resources\Images\cassava.svg" />
+	  <None Remove="Resources\Images\corn.svg" />
 	  <None Remove="Resources\Images\hold.svg" />
 	  <None Remove="Resources\Images\logo.svg" />
 	  <None Remove="Resources\Images\release.svg" />

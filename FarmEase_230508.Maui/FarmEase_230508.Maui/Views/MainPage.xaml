@@ -10,7 +10,7 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:LoadingPage}"
         Route="loading" />
-    <ShellContent ContentTemplate="{DataTemplate local:TodoItemPage}" Route="TodoItemPage"/>
+    <!--<ShellContent ContentTemplate="{DataTemplate local:TodoItemPage}" Route="TodoItemPage"/>-->
     <TabBar>
         <Tab Title="About" Icon="info">
             <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" Route= "about"  />
@@ -18,7 +18,7 @@
         <Tab Title ="Cycle" Icon="cycle">
             <ShellContent ContentTemplate="{DataTemplate local:CropCycleListPage}" Route="cycle" />
         </Tab>
-        <Tab Title ="Browse" Icon="browse">
+        <!--<Tab Title ="Browse" Icon="browse">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
         <Tab Title="Scheduler" Icon="scheduler">
@@ -29,11 +29,11 @@
         </Tab>
         <Tab Title="Charts" Icon="charts">
             <ShellContent ContentTemplate="{DataTemplate local:ChartsPage}" />
-        </Tab>
+        </Tab>-->
         <Tab Title ="Account" Icon="account">
             <ShellContent ContentTemplate="{DataTemplate local:AccountPage}" />
         </Tab>
-        <Tab Title="Popup" Icon="popup">
+        <!--<Tab Title="Popup" Icon="popup">
             <ShellContent ContentTemplate="{DataTemplate local:PopupPage}" />
         </Tab>
         <Tab Title="Notify" Icon="notify">
@@ -41,7 +41,7 @@
         </Tab>
         <Tab Title="Todo" Icon="todo">
             <ShellContent ContentTemplate="{DataTemplate local:TodoListPage}" Route="TodoList" />
-        </Tab>
+        </Tab>-->
     </TabBar>
     <TabBar>
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"
