@@ -8,9 +8,13 @@
              x:Class="FarmEase_230508.Maui.Views.CropCycleListPage"
              BackgroundColor="{DynamicResource BackgroundColor}"
              Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <views:CropIdToImageConverter x:Key="cropIdToImageConverter" />
     </ContentPage.Resources>
+    <!--<Button Text="+" Command="{Binding AddCommand}" FontSize="20" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,15,15" Style="{StaticResource PrimaryButton}" TextColor="{DynamicResource NormalHeaderText}"/>-->
     <ContentPage.Content>
         <dxg:DataGridView x:Name="grid"
                           ItemsSource="{Binding Items}"
@@ -22,7 +26,7 @@
             <dxg:DataGridView.AdvancedColumnLayout>
                 <dxg:AdvancedColumnLayout>
                     <dxg:AdvancedColumnLayout.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </dxg:AdvancedColumnLayout.ColumnDefinitions>
@@ -32,7 +36,7 @@
                     </dxg:AdvancedColumnLayout.RowDefinitions>
                 </dxg:AdvancedColumnLayout>
             </dxg:DataGridView.AdvancedColumnLayout>
-            <dxg:TemplateColumn FieldName="LineApprovalStatus" Row="0" Column="0" RowSpan="2">
+            <dxg:TemplateColumn FieldName="CropId" Row="0" Column="0" RowSpan="2">
                 <dxg:TemplateColumn.DisplayTemplate>
                     <DataTemplate>
                         <Image Source="{Binding Path=Item.CropId, Converter={StaticResource cropIdToImageConverter}}" 
@@ -42,8 +46,7 @@
             </dxg:TemplateColumn>
             <dxg:TextColumn FieldName="Owner" Caption="Owner" Row="0" Column="1" ColumnSpan="2"/>
             <dxg:DateColumn FieldName="StartDate" Caption="Start Date" DisplayFormat="MM/dd/yyyy" Row="1" Column="1"/>
-            <dxg:TextColumn FieldName="Status" Caption="Status" Row="1" ColumnSpan="2"/>
+            <dxg:TextColumn FieldName="Status" Caption="Status" Row="1" Column="2"/>
         </dxg:DataGridView>
     </ContentPage.Content>
-    <Button Text="+" Command="{Binding AddCommand}" FontSize="20" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,15,15" Style="{StaticResource PrimaryButton}" TextColor="{DynamicResource NormalHeaderText}"/>
 </ContentPage>

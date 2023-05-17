@@ -13,11 +13,11 @@ namespace FarmEase_230508.Maui.ViewModels {
     public class CropCycleListViewModel : BaseViewModel, IQueryAttributable {
         CropCycleDatabase database;
         private string userName;
-        public CropCycleListViewModel(CropCycleDatabase cropCycleDatabase) {
+        public CropCycleListViewModel() {
             Title = "Crop Cycles";
-            database = cropCycleDatabase;
-            UserName = SecureStorage.GetAsync("auth_id").Result;
             Items = new ObservableCollection<CropCycleData>();
+            database = new CropCycleDatabase();
+            UserName = SecureStorage.GetAsync("auth_id").Result;
             LoadData();
             PullToRefreshCommand = new Command(ExecutePullToRefreshCommand);
             AddCommand = new Command(ExecuteAddCommand);
@@ -66,7 +66,7 @@ namespace FarmEase_230508.Maui.ViewModels {
             var items = await database.GetCropCycleByOwner(UserName);
             MainThread.BeginInvokeOnMainThread(() => {
                 Items.Clear();
-                foreach (CropCycleData item in items)
+                foreach (var item in items)
                     Items.Add(item);
 
             });
