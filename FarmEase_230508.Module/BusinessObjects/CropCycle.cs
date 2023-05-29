@@ -156,23 +156,23 @@ namespace FarmEase_230508.Module.BusinessObjects {
             base.AfterConstruction();
         }
 
-        protected override void OnSaving() {
-            if (Session.IsNewObject(this)) {
-                var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
-                if (currentUser != null) {
-                    CreatedBy = currentUser.UserName;
-                    Owner = currentUser;
-                }
-                CreatedDate = DateTime.UtcNow;
-            } else {
-                var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
-                if (currentUser != null) {
-                    ModifiedBy = currentUser.UserName;
-                }
-                ModifiedDate = DateTime.UtcNow;
-            }
+        //protected override void OnSaving() {
+        //    if (Session.IsNewObject(this)) {
+        //        var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
+        //        if (currentUser != null) {
+        //            CreatedBy = currentUser.UserName;
+        //            Owner = currentUser;
+        //        }
+        //        CreatedDate = DateTime.UtcNow;
+        //    } else {
+        //        var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
+        //        if (currentUser != null) {
+        //            ModifiedBy = currentUser.UserName;
+        //        }
+        //        ModifiedDate = DateTime.UtcNow;
+        //    }
 
-            base.OnSaving();
-        }
+        //    base.OnSaving();
+        //}
     }
 }

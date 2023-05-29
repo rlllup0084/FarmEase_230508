@@ -7,6 +7,7 @@
     <FileVersion>1.0.0.0</FileVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9dcea34f-7729-4513-b771-369a0db46c38</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Images\farmease_logo.svg" />
@@ -31,6 +32,12 @@
     <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="22.2.3" />
     <PackageReference Include="DevExpress.ExpressApp.Validation.Blazor" Version="22.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.21.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.5.1" />

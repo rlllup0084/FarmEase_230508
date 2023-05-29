@@ -42,7 +42,7 @@ namespace FarmEase_230508.Blazor.Server.Editors.TreeListEditor {
         protected override void OnControlsCreated() {
             if (Control is TreeListHolder holder) {
                 holder.ComponentModel.GetDataAsync = GetDataAsync;
-                holder.ComponentModel.FieldNames = new string[] { nameof(ITreeNode.Name), "Description", "Seq", "Days", "TotalDays" };
+                holder.ComponentModel.FieldNames = new string[] { nameof(ITreeNode.Name), "Description", "Seq", "Days", "TotalDays", "RecType", "RecValue", "MainSeq" };
                 holder.ComponentModel.GetFieldDisplayText = GetFieldDisplayText;
                 holder.ComponentModel.GetKey = GetKey;
                 holder.ComponentModel.HasChildren = HasChildren;

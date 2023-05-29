@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+        
+		<OutputType>Exe</OutputType>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>FarmEase_230508.Maui</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>FarmEase System</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.FarmEase_230508.Maui</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-android'">21.0</SupportedOSPlatformVersion>
+		<UseInterpreter Condition="$(TargetFramework.Contains('-ios')) AND '$(Configuration)' == 'Release'">True</UseInterpreter>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\Images\logo.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#37353D" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#37353D" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\account.svg" />
+	  <None Remove="Resources\Images\cassava.svg" />
+	  <None Remove="Resources\Images\corn.svg" />
+	  <None Remove="Resources\Images\hold.svg" />
+	  <None Remove="Resources\Images\logo.svg" />
+	  <None Remove="Resources\Images\release.svg" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
+		<PackageReference Include="DevExpress.Maui.Charts" Version="22.2.5" />
+		<PackageReference Include="DevExpress.Maui.CollectionView" Version="22.2.5" />
+		<PackageReference Include="DevExpress.Maui.Core" Version="22.2.5" />
+		<PackageReference Include="DevExpress.Maui.DataGrid" Version="22.2.5" />
+		<PackageReference Include="DevExpress.Maui.Controls" Version="22.2.5" />
+		<PackageReference Include="DevExpress.Maui.Editors" Version="22.2.5" />
+		<PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Plugin.LocalNotification" Version="10.1.4" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
+		<TrimmableAssembly Include="DevExpress.Data.v22.2" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <MauiXaml Update="Themes\Dark.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Themes\Light.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AccountPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddCropCyclePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CropCycleListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CropCycleTasksListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoadingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PushNotifyDemoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TodoItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TodoListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+</Project>

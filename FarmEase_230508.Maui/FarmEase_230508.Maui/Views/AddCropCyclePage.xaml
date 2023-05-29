@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             Title="{Binding Title}"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             x:Class="FarmEase_230508.Maui.Views.AddCropCyclePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ItemTemplate">
+                <StackLayout Padding="5">
+                    <Label Text="{Binding Name}"
+                       TextColor="White"
+                       FontSize="Medium"
+                       FontAttributes="Bold"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Path=Notes}"
+                           TextColor="White"
+                           FontSize="Small" />
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowDefinitions="100,*,Auto">
+            <Grid>
+                <StackLayout VerticalOptions="Center" Margin="0,10,0,10">
+                    <Image Source="logo.png" WidthRequest="80" HeightRequest="80" />
+                    <Label Text="FarmEase" FontFamily="Univia-Pro" FontSize="20" HorizontalOptions="Center" TextColor="{DynamicResource NormalHeaderText}"/>
+                    <Label Text="Farming Made Easy" FontFamily="Univia-Pro" FontSize="14" HorizontalOptions="Center" TextColor="{DynamicResource NormalHeaderText}"/>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto" Padding="25,50,25,15" RowSpacing="10">
+                <dxe:ComboBoxEdit LabelText="Select a crop"
+                    ItemsSource="{Binding Crops}"
+                                  SelectedItem="{Binding Crop}"
+                    FocusedBorderColor="{DynamicResource Primary}"
+                    FocusedLabelColor="{DynamicResource NormalText}"
+                    ItemTemplate="{StaticResource ItemTemplate}"
+                    DisplayItemTemplate="{StaticResource ItemTemplate}"
+                                  DropDownBackgroundColor="{DynamicResource BackgroundColor}"
+                                  DropDownSelectedItemBackgroundColor="{DynamicResource Primary}"
+                    VerticalOptions="Center"/>
+                <dxe:DateEdit
+                    Grid.Row="1"
+                Date="{Binding StartDate, Mode=TwoWay}"
+                    FocusedLabelColor="{DynamicResource NormalText}"
+                    FocusedBorderColor="{DynamicResource Primary}"
+                LabelText="Start date"
+                TextHorizontalAlignment="End"
+                IsDateIconVisible="False"
+                ClearIconVisibility="Auto"
+                DisplayFormat="d"/>
+                <ActivityIndicator Margin="0,0,0,0" VerticalOptions="Center" IsRunning="{Binding IsInProcess}" HorizontalOptions="Center" WidthRequest="40" HeightRequest="40" Color="{DynamicResource Primary}" Grid.Row="2"/>
+            </Grid>
+            <Button Grid.Row="2" Margin="25,20,25,20"
+                    Text="Create Crop Cycle"
+                    Style="{DynamicResource PrimaryButton}"
+                    Command="{Binding CreateCommand}"/>
+        </Grid>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

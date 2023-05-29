@@ -141,6 +141,9 @@ public class Startup {
                 // Use options.BusinessObject<YourBusinessObject>() to make the Business Object available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
                 options.BusinessObject<ApplicationUser>();
                 options.BusinessObject<CropTask>();
+                options.BusinessObject<Crop>();
+                options.BusinessObject<CropCycle>();
+                options.BusinessObject<CropCycleTask>();
             })
             .AddXpoServices();
         services

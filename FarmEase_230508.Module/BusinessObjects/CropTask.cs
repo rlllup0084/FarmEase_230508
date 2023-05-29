@@ -12,7 +12,10 @@ namespace FarmEase_230508.Module.BusinessObjects {
     public class CropTask : XPObject, ITreeNode {
         private Crop _CropId;
         private CropTask _ParentId;
+        private int _MainSeq = 0;
         private int _Seq = 0;
+        private RecurrenceType _RecType = RecurrenceType.Daily;
+        private int _RecValue = 0;
         private string _Title;
         private string _Description;
         private string _Notes;
@@ -30,15 +33,30 @@ namespace FarmEase_230508.Module.BusinessObjects {
             set { SetPropertyValue(nameof(ParentId), ref _ParentId, value); }
         }
 
+        public int MainSeq {
+            get { return _MainSeq; }
+            set { SetPropertyValue(nameof(MainSeq), ref _MainSeq, value); }
+        }
+
         public int Seq {
             get { return _Seq; }
             set { SetPropertyValue(nameof(Seq), ref _Seq, value); }
+        }
+
+        public RecurrenceType RecType {
+            get { return _RecType; }
+            set { SetPropertyValue(nameof(RecType), ref _RecType, value); }
         }
 
         [Required]
         public string Title {
             get { return _Title; }
             set { SetPropertyValue(nameof(Title), ref _Title, value); }
+        }
+
+        public int RecValue {
+            get { return _RecValue; }
+            set { SetPropertyValue(nameof(RecValue), ref _RecValue, value); }
         }
 
         public string Description {

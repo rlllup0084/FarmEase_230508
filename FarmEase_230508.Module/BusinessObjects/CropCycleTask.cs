@@ -1,5 +1,6 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Base.General;
 using DevExpress.Xpo;
 using System.ComponentModel.DataAnnotations;
 using AggregatedAttribute = DevExpress.Xpo.AggregatedAttribute;
@@ -11,17 +12,30 @@ namespace FarmEase_230508.Module.BusinessObjects {
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     public class CropCycleTask : XPObject {
         private CropCycle _CropCycleId;
+        private CropTask _TaskId;
         private CropCycleTask _ParentId;
         private string _Title;
         private string _Description;
         private DateTime _StartDate;
         private DateTime _EndDate;
         private int _Progress;
+        private int _MainSeq;
+        private int _Seq;
+        private RecurrenceType _RecType;
+        private int _RecValue;
+        private CropCycleTaskStatus _Status;
+        private string _Notes;
+        private int _Days;
 
         [Association("CropCycle-Tasks")]
         public CropCycle CropCycleId {
             get { return _CropCycleId; }
             set { SetPropertyValue(nameof(CropCycleId), ref _CropCycleId, value); }
+        }
+
+        public CropTask TaskId {
+            get { return _TaskId; }
+            set { SetPropertyValue(nameof(TaskId), ref _TaskId, value); }
         }
 
         [Association("Parent-Tasks")]
@@ -41,6 +55,37 @@ namespace FarmEase_230508.Module.BusinessObjects {
             set { SetPropertyValue(nameof(Description), ref _Description, value); }
         }
 
+        public int Days {
+            get { return _Days; }
+            set { SetPropertyValue(nameof(Days), ref _Days, value); }
+        }
+
+        [Size(SizeAttribute.Unlimited)]
+        public string Notes {
+            get { return _Notes; }
+            set { SetPropertyValue(nameof(Notes), ref _Notes, value); }
+        }
+
+        public int MainSeq {
+            get { return _MainSeq; }
+            set { SetPropertyValue(nameof(MainSeq), ref _MainSeq, value); }
+        }
+
+        public int Seq {
+            get { return _Seq; }
+            set { SetPropertyValue(nameof(Seq), ref _Seq, value); }
+        }
+
+        public RecurrenceType RecType {
+            get { return _RecType; }
+            set { SetPropertyValue(nameof(RecType), ref _RecType, value); }
+        }
+
+        public int RecValue {
+            get { return _RecValue; }
+            set { SetPropertyValue(nameof(RecValue), ref _RecValue, value); }
+        }
+
         [Required]
         public DateTime StartDate {
             get { return _StartDate; }
@@ -56,6 +101,11 @@ namespace FarmEase_230508.Module.BusinessObjects {
         public int Progress {
             get { return _Progress; }
             set { SetPropertyValue(nameof(Progress), ref _Progress, value); }
+        }
+
+        public CropCycleTaskStatus Status {
+            get { return _Status; }
+            set { SetPropertyValue(nameof(Status), ref _Status, value); }
         }
 
         [Association("Parent-Tasks"), Aggregated]
@@ -104,22 +154,22 @@ namespace FarmEase_230508.Module.BusinessObjects {
             base.AfterConstruction();
         }
 
-        protected override void OnSaving() {
-            if (Session.IsNewObject(this)) {
-                var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
-                if (currentUser != null) {
-                    CreatedBy = currentUser.UserName;
-                }
-                CreatedDate = DateTime.UtcNow;
-            } else {
-                var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
-                if (currentUser != null) {
-                    ModifiedBy = currentUser.UserName;
-                }
-                ModifiedDate = DateTime.UtcNow;
-            }
+        //protected override void OnSaving() {
+        //    if (Session.IsNewObject(this)) {
+        //        var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
+        //        if (currentUser != null) {
+        //            CreatedBy = currentUser.UserName;
+        //        }
+        //        CreatedDate = DateTime.UtcNow;
+        //    } else {
+        //        var currentUser = Session.GetObjectByKey<ApplicationUser>((Guid)SecuritySystem.CurrentUserId);
+        //        if (currentUser != null) {
+        //            ModifiedBy = currentUser.UserName;
+        //        }
+        //        ModifiedDate = DateTime.UtcNow;
+        //    }
 
-            base.OnSaving();
-        }
+        //    base.OnSaving();
+        //}
     }
 }
