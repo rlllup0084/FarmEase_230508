@@ -7,7 +7,7 @@ using FarmEase_230508.Maui.Models;
 namespace FarmEase_230508.Maui.Services {
     public class LoginService : ILoginService {
         private static readonly HttpClient HttpClient = new HttpClient();
-        private readonly string _apiUrl = ON.Platform(android: "http://192.168.1.102:5000/api/Authentication/", iOS: "http://192.168.1.102:5000/api/Authentication/");
+        private readonly string _apiUrl = ON.Platform(android: "http://192.168.1.213:5000/api/Authentication/", iOS: "http://192.168.1.213:5000/api/Authentication/");
 
         public LoginService() {
         }

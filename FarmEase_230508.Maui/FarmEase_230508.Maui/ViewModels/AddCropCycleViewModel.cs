@@ -3,6 +3,7 @@ using FarmEase_230508.Maui.Data;
 using FarmEase_230508.Maui.Models;
 using Newtonsoft.Json;
 using Plugin.LocalNotification;
+using System.Collections.ObjectModel;
 
 namespace FarmEase_230508.Maui.ViewModels {
     public enum CropTypeEnum {
@@ -14,7 +15,7 @@ namespace FarmEase_230508.Maui.ViewModels {
         private CropData crop;
 
         bool isInProcess;
-        public List<CropData> Crops { get; }
+        public List<CropData> Crops { get; private set; }
 
         CropCycleDatabase database;
         CropCycleTaskDatabase database2;
@@ -23,11 +24,21 @@ namespace FarmEase_230508.Maui.ViewModels {
             database = new CropCycleDatabase();
             database2 = new CropCycleTaskDatabase();
             Title = "Add Crop Cycle";
-            Crops = new List<CropData> {
-                new CropData("Corn", "The crop cycle schedule for corn can vary depending on various factors such as the specific corn variety, climate, and local growing conditions.", "8eba8dea-9414-44b5-a83f-37262d4c3fcb"),
-                new CropData("Cassava", "The crop cycle schedule for cassava can vary depending on various factors such as climate, cultivar, and intended use of the crop.", "4cdc549d-d5dc-4440-ad87-530380401d35")
-            };
+            Crops = new List<CropData>();
+            LoadCrops();
             CreateCommand = new Command(ExecuteCreateCommand);
+        }
+
+        private async void LoadCrops() {
+            var response = await CropCycleService.GetCrops();
+            CropResponse cropResponse = JsonConvert.DeserializeObject<CropResponse>(response);
+            MainThread.BeginInvokeOnMainThread(() => {
+                Crops.Clear();
+                foreach (Crop crop in cropResponse.value) {
+                    CropData cropData = new CropData(crop.Name, crop.Notes, crop.Oid);
+                    Crops.Add(cropData);
+                }
+            });
         }
 
         public bool IsInProcess {
@@ -40,7 +51,7 @@ namespace FarmEase_230508.Maui.ViewModels {
             string owner = SecureStorage.GetAsync("auth_id").Result;
             var cropCreateCommand = new CropCreateCommand {
                 StartDate = this.startDate,
-                CropId = Guid.Parse(this.crop.Id)
+                CropId = Guid.Parse(this.crop.Id),
             };
             var response = await CropCycleService.CreateCropCycle(cropCreateCommand);
 
@@ -54,6 +65,7 @@ namespace FarmEase_230508.Maui.ViewModels {
                     CropCycleId = cropCycleEntity.Oid,
                     Owner = owner,
                     CropId = Guid.Parse(this.crop.Id),
+                    CropName = this.crop.Name,
                     StartDate = cropCycleEntity.StartDate,
                     Status = CropCycleStatus.NotStarted
                 };
@@ -160,5 +172,21 @@ namespace FarmEase_230508.Maui.ViewModels {
             get => crop;
             set => SetProperty(ref crop, value);
         }
+    }
+
+    public class Crop {
+        public string Oid { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Notes { get; set; }
+        public int Days { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
+    }
+
+    public class CropResponse {
+        public List<Crop> value { get; set; }
     }
 }

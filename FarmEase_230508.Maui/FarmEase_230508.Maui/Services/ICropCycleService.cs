@@ -12,5 +12,7 @@ namespace FarmEase_230508.Maui.Services {
         Task<string> GetCropCycleById(int Id);
 
         Task<string> GetCropCycleTasksById(int Id);
+
+        Task<string> GetCrops();
     }
 }

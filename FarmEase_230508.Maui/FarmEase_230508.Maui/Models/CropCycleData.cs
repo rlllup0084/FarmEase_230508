@@ -13,6 +13,7 @@ namespace FarmEase_230508.Maui.Models {
         public int CropCycleId { get; set; }
         public string Owner { get; set; }
         public Guid CropId { get; set; }
+        public string CropName { get; set; }
         public DateTime StartDate { get; set; }
         public CropCycleStatus Status { get; set; }
     }

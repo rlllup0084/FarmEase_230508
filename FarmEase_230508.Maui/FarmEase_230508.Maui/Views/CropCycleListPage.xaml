@@ -46,7 +46,7 @@
                     </DataTemplate>
                 </dxg:TemplateColumn.DisplayTemplate>
             </dxg:TemplateColumn>
-            <dxg:TextColumn FieldName="Owner" Caption="Owner" Row="0" Column="1" ColumnSpan="2"/>
+            <dxg:TextColumn FieldName="CropName" Caption="Crop Name" Row="0" Column="1" ColumnSpan="2"/>
             <dxg:DateColumn FieldName="StartDate" Caption="Start Date" DisplayFormat="MM/dd/yyyy" Row="1" Column="1"/>
             <dxg:TextColumn FieldName="Status" Caption="Status" Row="1" Column="2"/>
         </dxg:DataGridView>
